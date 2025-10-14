@@ -1,0 +1,13 @@
+<div class="card h-100">
+  <img [src]="event.imageUrl" class="card-img-top" alt="{{event.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{ event.title }}</h5>
+    <p class="card-text">{{ event.description }}</p>
+    <p><strong>Date:</strong> {{ event.date | date:'longDate' }}</p>
+    <p><strong>Lieu:</strong> {{ event.location }}</p>
+    <p><strong>Prix:</strong> {{ event.price }} DT</p>
+    <p><strong>Places disponibles:</strong> {{ event.nbPlaces }}</p>
+    <p><strong>Likes:</strong> {{ event.nbrLike }}</p>
+    <button class="btn btn-primary" (click)="onLike()">Like ❤️</button>
+  </div>
+</div>

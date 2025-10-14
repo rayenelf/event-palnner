@@ -1,0 +1,35 @@
+<div class="container mt-4">
+
+  <input type="text" class="form-control mb-3" placeholder="Rechercher par titre ou lieu"
+         [(ngModel)]="searchTerm">
+
+  
+  <h2>Liste des événements</h2>
+  <div class="row">
+    <div *ngFor="let event of filteredEvents" class="col-md-6 col-lg-4 mb-4">
+      <app-card-event [event]="event" (liked)="likeEvent($event)"></app-card-event>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <h3>Événements favoris </h3>
+  <div class="row" *ngIf="favoris.length > 0; else noFav">
+    <div *ngFor="let fav of favoris" class="col-md-6 col-lg-4 mb-4">
+      <app-card-event [event]="fav"></app-card-event>
+    </div>
+  </div>
+  <ng-template #noFav>
+    <p>Aucun favori pour le moment.</p>
+  </ng-template>
+
+  <hr>
+
+  <h3>Top 3 événements avec le moins de places </h3>
+  <div class="row">
+    <div *ngFor="let best of bestEvents" class="col-md-6 col-lg-4 mb-4">
+      <app-card-event [event]="best"></app-card-event>
+    </div>
+  </div>
+</div>

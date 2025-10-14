@@ -1,0 +1,31 @@
+<h2>{{ title }}</h2>
+<input type="text" placeholder="Search by name" class="form-control mb-3" [(ngModel)] = "searchTerm" />
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of listProducts">
+      <ng-container *ngIf ="p.name == searchTerm" || searchTerm ="">
+      <td>{{ p.id }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.price }} $</td>
+      <td>{{ p.description }}</td>
+      <td>{{ p.quantity }}</td>
+      <td>
+        <button (click)="buy(p)" [disabled]="p.quantity === 0">Buy</button>
+        <button>Like</button>
+
+      </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
