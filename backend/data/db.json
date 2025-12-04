@@ -1,0 +1,87 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "events": [
+    {
+      "title": "Angular work",
+      "description": "Conférence sur Angular et l’écosystème front-end",
+      "date": "2025-12-26",
+      "price": 50,
+      "places": 15,
+      "image": "images/event1.PNG",
+      "domaines": [
+        "ssddd"
+      ],
+      "nbLikes": 0,
+      "organizerId": 1,
+      "id": "1",
+      "imageUrl": "images/event1.PNG",
+      "nbPlaces": 15
+    },
+    {
+      "id": "2",
+      "title": "Web dev days",
+      "description": "Journée dédiée aux frameworks web modernes.",
+      "date": "2025-01-05",
+      "place": "Ariana",
+      "price": 30,
+      "organizerId": 1,
+      "imageUrl": "images/event2.PNG",
+      "nbPlaces": 0,
+      "nbLikes": 0
+    }
+  ],
+  "participations": [
+    {
+      "id": "3cad",
+      "eventId": 2,
+      "nbPlaces": 12,
+      "emailParticipant": "mohamed@gmail.com",
+      "userId": 1,
+      "status": "confirmed",
+      "registrationDate": "2025-12-04T13:46:50.895Z"
+    },
+    {
+      "id": "c33f",
+      "eventId": 1,
+      "nbPlaces": 5,
+      "emailParticipant": "mohamed@gmail.com",
+      "userId": 1,
+      "status": "confirmed",
+      "registrationDate": "2025-12-04T13:47:03.646Z"
+    },
+    {
+      "id": "92d4",
+      "eventId": 1,
+      "nbPlaces": 3,
+      "emailParticipant": "mohamed@gmail.com",
+      "userId": 1,
+      "status": "confirmed",
+      "registrationDate": "2025-12-04T13:51:50.767Z"
+    },
+    {
+      "id": "7d12",
+      "eventId": 1,
+      "nbPlaces": 2,
+      "emailParticipant": "a@a.com",
+      "userId": 1,
+      "status": "confirmed",
+      "registrationDate": "2025-12-04T13:58:24.251Z"
+    }
+  ]
+}

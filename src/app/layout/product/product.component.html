@@ -1,0 +1,67 @@
+<!--<div class="container">
+  <h3>Liste (cards / simple list)</h3>
+
+   <ul>
+    <li *ngFor="let p of listproduct; trackBy: trackById">
+      <strong>{{ p.name }}</strong>
+      — {{ p.description }} — <em>{{ p.price | number:'1.0-2' }} DT</em>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h3>Table</h3>
+  <input type="text" class="form-control" placeholder="search"  [(ngModel)]="searchText">
+  <table class="table" >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price (DT)</th>
+        <th>like</th>
+        <th>quntity</th>
+      </tr>
+    </thead>
+    <tbody>-->
+      <!-- <tr *ngFor="let p of listproduct;let products of filteredCart"> -->
+        <!-- <ng-container *ngIf="p.name == searchText || searchText==''"> -->
+<!--<tr *ngFor="let p of listproduct;let x of cart">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.description }}</td>
+        <td>{{ p.price | number:'1.0-2' }}</td>
+        <td>{{ p.like }}</td>
+        <td>{{ p.quntity }}</td>
+
+        <td>-->
+          <!-- <button class="btn btn-success" (click)="ajouter(p.id)">buy</button> -->
+       <!--   <button class="btn btn-success" [disabled]="p.quntity === 0" (click)="ajouter1(p.id)">buy</button>
+          <button class="btn btn-danger">supp</button>
+        </td>-->
+        <!-- </ng-container> -->
+  <!---    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p>No products to show.</p>
+  </ng-template>
+  <input type="text" placeholder="hi" [(ngModel)]="searchText1" >
+</div>
+-->
+<h1>   CHoisissez un type de produit</h1>
+<select  [(ngModel)]="selectedProductType">
+
+
+  <option value="telephone">Téléphone</option>
+  <option value="tv">TV</option>
+
+</select>
+
+
+<div>
+   <app-telephone  *ngIf="selectedProductType === 'telephone'"></app-telephone>
+    <app-tv  *ngIf="selectedProductType === 'tv'"></app-tv>
+
+</div>

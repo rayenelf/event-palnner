@@ -1,0 +1,43 @@
+<p>reactive-form works!</p>
+<form #Myform="ngForm">
+
+   <label class="form-label">Login</label>
+   <input class="form-control" name="login" #login minlength="6" ngModel type="text" >
+   <!-- <div class="alert alert-danger" *ngIf="formLogin.controls['lg'].invalid && formLogin.controls['lg'].touched" > -->
+    <!-- <p *ngIf="formLogin.controls['lg'].hasError('required')">
+      Login obligatoire
+    </p>
+    <p *ngIf="formLogin.controls['lg'].hasError('minlength')">
+      login minLength 4 </p>
+   </div> -->
+
+     <label class="form-label">Password</label>
+   <input class="form-control" name="" minlength="8" required pattern="" ngModel type="text"  >
+   <!-- <div class="alert alert-danger" *ngIf="formLogin.controls['password'].invalid && formLogin.controls['password'].touched" >
+    <p>password obligatoire</p>
+    <p>password pattern: [a-zA-Z0-9]*</p>
+    <p>password minLength 6</p>
+   </div> -->
+
+        <label class="form-label">email</label>
+   <input class="form-control" type="text" name="" ngModel >
+   <!-- <div class="alert alert-danger" *ngIf="formLogin.controls['email'].invalid && formLogin.controls['email'].touched" >
+    <p>email obligatoire</p>
+    <p> email format</p>
+   </div> -->
+
+        <label class="form-label">age</label>
+   <input class="form-control" type="text"  name="" ngModel>
+   <!-- <div class="alert alert-danger"  *ngIf="formLogin.controls['age'].invalid && formLogin.controls['age'].touched" >
+    <p>age obligatoire</p>
+   </div> -->
+
+        <label class="form-label">cin</label>
+   <input class="form-control" type="text"  name="" ngModel>
+   <!-- <div class="alert alert-danger" *ngIf="formLogin.controls['cin'].invalid && formLogin.controls['cin'].touched" >
+    <p>cin obligatoire</p>
+   </div> -->
+
+   <input class="btn btn-primary" type="submit" value="Submit" (click)="save(Myform)" [disabled]="Myform.valid" >
+
+</form>

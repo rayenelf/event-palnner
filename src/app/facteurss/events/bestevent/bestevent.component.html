@@ -1,0 +1,26 @@
+<!--<div *ngIf="bestEvents.length > 0">
+  <h3 class="text-center mb-3">🌟 TOP 3 Best Events</h3>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let b of bestEvents">
+      <div class="card border-warning shadow-sm">
+        <img [src]="b.imageUrl" class="card-img-top" alt="{{ b.title }}" height="200">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ b.title }}</h5>
+          <p class="card-text"  [listevent]="false">👍 Likes : {{ b.nbrLike }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<div *ngIf="bestEvents.length > 0">
+  <h3 class="text-center mb-3" >🌟 TOP 3 Best Events</h3>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let b of bestEvents">
+      <app-event-card
+        [event]="b"
+        [listevent]="false">
+      </app-event-card>
+    </div>
+  </div>
+</div>
+

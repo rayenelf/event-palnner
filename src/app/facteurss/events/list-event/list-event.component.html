@@ -1,0 +1,56 @@
+<!-- <div class="row">
+      <input type="text" class="form-control" placeholder="search"  [(ngModel)]="searchText">
+  <div class="col-sm-6 mb-3 mb-sm-0"  *ngFor="let p of listEevents;let ev of filteredEvents">
+    <img src="{{p.imageUrl}}" class="card-img-top" alt="..." height="300">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}}</h5>
+        <p class="card-text">
+            📍 {{ ev.location }} <br>
+            📅 {{ ev.date | date:'longDate' }} <br>
+            🎟 Places dispo : {{ ev.nbPlaces }}
+          </p>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <button class="btn btn-primary" [disabled]="p.nbPlaces === 0" (click)="ajouter(p.id)">👍Like</button>{{p.nbrLike}}
+    <button class="btn btn-success"> <a class="e" [routerLink]="['/events/details', p.id]">Details</a></button>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+
+
+
+<nav class="navbar navbar-light bg-light justify-content-between px-4">
+  <a class="navbar-brand">Events</a>
+<button routerLink="/events/add-event" class="btn btn-primary">Proposer un événement</button>
+  <div class="d-flex align-items-center gap-3">
+    <button class="btn btn-warning" (click)="toggleBest()">🌟 Best favoris</button>
+
+    <li class="nav-item dropdown list-unstyled" *ngIf="likedEvents.length > 0">
+      <a class="nav-link dropdown-toggle text-dark" href="#" id="likedDropdown"
+         role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        ❤️ Liked Events ({{ likedEvents.length }})
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="likedDropdown">
+        <li *ngFor="let ev of likedEvents">
+          <a class="dropdown-item" [routerLink]="['/events/details', ev.id]">{{ ev.title }}</a>
+        </li>
+      </ul>
+    </li>
+  </div>
+</nav>
+
+<div class="container mt-3">
+  <input type="text" class="form-control mb-4" placeholder="🔍 Search..." [(ngModel)]="searchText">
+
+  <div class="row g-4">
+    <div class="col-md-4 col-sm-6" *ngFor="let ev of filteredEvents()| pipes:showBest">
+      <app-event-card [event]="ev" (liked)="onEventLiked($event)" (edit)="onEditEvent($event)" (delete)="onDeleteEvent($event)"></app-event-card>
+    </div>
+  </div>
+<!-- *ngIf="showBest" -->
+  <div  class="mt-5">
+    <app-bestevent [bestEvents]="bestEvents|pipes:true"></app-bestevent>
+  </div>
+</div>

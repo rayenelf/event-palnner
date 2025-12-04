@@ -1,0 +1,24 @@
+<div class="card shadow-sm h-100 border-0" appDirective>
+  <img [src]="event.imageUrl" class="card-img-top mb-3" alt="{{ event.title }}" height="200" />
+  <div class="card-body text-center">
+    <h5 class="card-title text-primary"  [ngStyle]="{'color': event.nbrLike > 2 ? 'red' : 'green'}">{{ event.title }}</h5>
+    <p class="card-text" [ngClass]="{'text-danger':event.nbPlaces===0,'text-success':event.nbPlaces>0}">
+      📍 {{ event.location }} <br />
+      📅 {{ event.date | date:'longDate' }} <br />
+      🎟 Places dispo : {{ event.nbPlaces }}
+    </p>
+    <div *ngIf="listevent">
+    <button class="btn btn-primary me-2"
+            [disabled]="event.nbPlaces === 0"
+            (click)="likeEvent()">👍 Like</button>
+    {{ event.nbrLike }}</div>
+    <button class="btn btn-success">
+      <a [routerLink]="['/events/details', event.id]" class="text-white text-decoration-none" >Details</a>
+    </button>
+    <button class="btn btn-primary">
+      <a [routerLink]="['/events/participe', event.id, event.price]" class="text-white text-decoration-none" >participe</a>
+    </button>
+    <a class="btn btn-warning mt-2 text-white text-decoration-none" [routerLink]="['/events/add-event']" [queryParams]="{ id: event.id }">Edit</a>
+    <button class="btn btn-danger mt-2 ms-2" (click)="deleteEvent()">Delete</button>
+  </div>
+</div>

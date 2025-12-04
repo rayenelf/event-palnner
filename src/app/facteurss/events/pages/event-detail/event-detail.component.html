@@ -1,0 +1,13 @@
+<div *ngIf="event" class="card mt-3 p-3 shadow">
+  <h2 class="card-title text-center">{{ event.title }}</h2>
+  <img [src]="event.imageUrl" class="card-img-top my-3" height="300">
+  <div class="card-body">
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    <p>📍 <strong>Lieu:</strong> {{ event.location }}</p>
+    <p>📅 <strong>Date:</strong> {{ event.date | date:'longDate' }}</p>
+    <p>💵 <strong>Prix:</strong> {{ event.price }} DT</p>
+    <p>🎟 <strong>Places dispo:</strong> {{ event.nbPlaces }}</p>
+    <p>👍 <strong>Likes:</strong> {{ event.nbrLike }}</p>
+  </div>
+  <button routerLink="/events/events" class="btn btn-secondary mt-3">⬅ Retour</button>
+</div>

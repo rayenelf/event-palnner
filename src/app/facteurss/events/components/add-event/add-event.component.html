@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <h2>Ajouter un évènement</h2>
+
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Titre :</label>
+      <input type="text" formControlName="title" class="form-control">
+      <div *ngIf="eventForm.get('title')?.touched && eventForm.get('title')?.invalid" class="text-danger">
+        <small *ngIf="eventForm.get('title')?.errors?.['required']">Titre obligatoire</small>
+        <small *ngIf="eventForm.get('title')?.errors?.['minlength']">Minimum 5 caractères</small>
+        <small *ngIf="eventForm.get('title')?.errors?.['pattern']">Lettres uniquement</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Description :</label>
+      <textarea formControlName="description" class="form-control"></textarea>
+      <div *ngIf="eventForm.get('description')?.touched && eventForm.get('description')?.invalid" class="text-danger">
+        <small *ngIf="eventForm.get('description')?.errors?.['required']">Description obligatoire</small>
+        <small *ngIf="eventForm.get('description')?.errors?.['minlength']">Minimum 30 caractères</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Date :</label>
+      <input type="date" formControlName="date" class="form-control">
+      <div *ngIf="eventForm.get('date')?.touched && eventForm.get('date')?.invalid" class="text-danger">
+        <small *ngIf="eventForm.get('date')?.errors?.['required']">Date obligatoire</small>
+        <small *ngIf="eventForm.get('date')?.errors?.['futureDateInvalid']">
+          {{ eventForm.get('date')?.errors?.['futureDateInvalid'] }}
+        </small>
+      </div>
+    </div>
+
+    <div>
+      <label>Prix :</label>
+      <input type="text" formControlName="price" class="form-control">
+      <div *ngIf="eventForm.get('price')?.touched && eventForm.get('price')?.invalid" class="text-danger">
+        <small *ngIf="eventForm.get('price')?.errors?.['required']">Prix obligatoire</small>
+        <small *ngIf="eventForm.get('price')?.errors?.['pattern']">Nombre uniquement</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Nombre de places :</label>
+      <input type="text" formControlName="places" class="form-control">
+      <div *ngIf="eventForm.get('places')?.touched && eventForm.get('places')?.invalid" class="text-danger">
+        <small *ngIf="eventForm.get('places')?.errors?.['required']">Champ obligatoire</small>
+        <small *ngIf="eventForm.get('places')?.errors?.['pattern']">Max 100</small>
+      </div>
+    </div>
+
+    <div formArrayName="domaines">
+      <label>Domaines :</label>
+      <div *ngFor="let domaine of domaines.controls; let i = index">
+        <input [formControlName]="i" class="form-control mb-2">
+        <div *ngIf="domaine.touched && domaine.invalid" class="text-danger">
+          <small *ngIf="domaine.errors?.['required']">Domaine obligatoire</small>
+          <small *ngIf="domaine.errors?.['minlength']">Min 3 caractères</small>
+          <small *ngIf="domaine.errors?.['maxlength']">Max 20 caractères</small>
+        </div>
+      </div>
+      <button type="button" (click)="addDomain()" class="btn btn-secondary mt-2">+ Ajouter un domaine</button>
+    </div>
+
+    <div>
+      <label>Image (URL) :</label>
+      <input type="text" formControlName="image" class="form-control">
+    </div>
+
+    <button type="submit" [disabled]="eventForm.invalid" class="btn btn-success mt-3">{{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}</button>
+  </form>
+</div>

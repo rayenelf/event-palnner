@@ -1,0 +1,12 @@
+  <div class="container mt-4">
+
+  <input type="text" [(ngModel)]="searchTerm" class="form-control mb-4" placeholder="Rechercher un produit...">
+  <div class="row g-4">
+    <div class="col-md-4 col-sm-6" *ngFor="let tv of listProducts; let i = index">
+
+      <ng-container *ngIf="searchTerm === '' ">
+        <app-card-product [p]="tv"  (notificationAcheter)="afterRecieveData($event)"></app-card-product>
+      </ng-container>
+    </div>
+  </div>
+</div>

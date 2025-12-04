@@ -1,0 +1,49 @@
+
+<h2>Formulaire de participation</h2>
+
+<form #participationForm="ngForm" (ngSubmit)="onSubmit(participationForm)" novalidate>
+
+  <!-- Email -->
+  <div>
+    <label>Adress :</label>
+    <input
+      type="email"
+      name="emailParticipant"
+      [(ngModel)]="participation.emailParticipant"
+      required
+      email
+      #email="ngModel"
+    />
+    <div *ngIf="email.invalid && email.touched" class="error">
+      <small *ngIf="email.errors?.['required']">Email est obligatoire.</small>
+      <small *ngIf="email.errors?.['email']">Format email invalide.</small>
+    </div>
+  </div>
+
+  <!-- Nombre de places -->
+  <div>
+    <label>Nombre de places :</label>
+    <input
+      type="number"
+      name="nbPlaces"
+      [(ngModel)]="participation.nbPlaces"
+      required
+      min="1"
+      #nbPlaces="ngModel"
+      (blur)="calculateTotalPrice()"
+    />
+    <div *ngIf="nbPlaces.invalid && nbPlaces.touched" class="error">
+      <small *ngIf="nbPlaces.errors?.['required']">Nombre de places est obligatoire.</small>
+      <small *ngIf="nbPlaces.errors?.['min']">Le nombre doit être > 0.</small>
+    </div>
+  </div>
+
+  <!-- Prix total -->
+  <div *ngIf="totalPrice > 0" class="total">
+    <p>💰 Prix total : {{ totalPrice }} DT</p>
+  </div>
+
+  <!-- Bouton Soumettre -->
+  <button type="submit" [disabled]="participationForm.invalid">Soumettre</button>
+
+</form>
